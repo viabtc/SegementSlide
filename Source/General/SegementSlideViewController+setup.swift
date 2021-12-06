@@ -92,7 +92,7 @@ extension SegementSlideViewController {
         cleanUpChildKeyValueObservations()
     }
     
-    internal func layoutSegementSlideScrollView() {
+    public func layoutSegementSlideScrollView() {
         let topLayoutLength: CGFloat
         if edgesForExtendedLayout.contains(.top) {
             topLayoutLength = 0
