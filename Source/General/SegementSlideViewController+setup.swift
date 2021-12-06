@@ -158,6 +158,10 @@ extension SegementSlideViewController {
         if contentView.bottomConstraint == nil {
             contentView.bottomConstraint = contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         }
+        // 保持底部偏移一致
+        if let offset = scrollView.bottomConstraint?.constant {
+            contentView.bottomConstraint?.constant = offset
+        }
         
         headerView.layer.zPosition = -3
         contentView.layer.zPosition = -2
@@ -168,6 +172,11 @@ extension SegementSlideViewController {
         let innerHeaderHeight = headerView.frame.height
         let contentSize = CGSize(width: view.bounds.width, height: topLayoutLength+innerHeaderHeight+switcherHeight+contentViewHeight+1)
         if scrollView.contentSize != contentSize {
+            // 修复偏移过大不会回弹
+            if scrollView.contentOffset.y > contentSize.height - scrollView.bounds.height {
+                canParentViewScroll = true
+                canChildViewScroll = false
+            }
             scrollView.contentSize = contentSize
         }
     }

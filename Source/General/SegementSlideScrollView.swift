@@ -10,7 +10,7 @@ import UIKit
 
 public class SegementSlideScrollView: UIScrollView, UIGestureRecognizerDelegate {
     
-    private var otherGestureRecognizers: [UIGestureRecognizer]?
+    public var otherGestureRecognizers: [UIGestureRecognizer]?
     
     internal init(otherGestureRecognizers: [UIGestureRecognizer]? = nil) {
         self.otherGestureRecognizers = otherGestureRecognizers

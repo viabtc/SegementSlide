@@ -66,6 +66,14 @@ public class SegementSlideContentView: UIView {
         scrollView.showsVerticalScrollIndicator = false
         scrollView.backgroundColor = .clear
         backgroundColor = .white
+        scrollView.semanticContentAttribute = .forceLeftToRight
+        horizontalFlipIfNeed(scrollView)
+    }
+    
+    func horizontalFlipIfNeed(_ view: UIView?) {
+        if UIView.userInterfaceLayoutDirection(for: UIView.appearance().semanticContentAttribute) == .rightToLeft {
+            view?.transform = CGAffineTransform(scaleX: -1, y: 1)
+        }
     }
     
     public override func layoutSubviews() {
@@ -179,6 +187,7 @@ extension SegementSlideContentView {
         if let childViewController = dequeueReusableViewController(at: index) {
             return childViewController
         } else if let childViewController = delegate?.segementSlideContentScrollView(at: index) {
+            horizontalFlipIfNeed(childViewController.view)
             viewControllers[index] = childViewController
             return childViewController
         }
