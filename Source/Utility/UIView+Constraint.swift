@@ -14,9 +14,9 @@ private var trailingConstraintKey: Void?
 private var widthConstraintKey: Void?
 private var heightConstraintKey: Void?
 
-internal extension UIView {
+public extension UIView {
     
-    var topConstraint: NSLayoutConstraint? {
+    public var topConstraint: NSLayoutConstraint? {
         get {
             if let value = objc_getAssociatedObject(self, &topConstraintKey) as? NSLayoutConstraint {
                 return value
@@ -33,7 +33,7 @@ internal extension UIView {
         }
     }
     
-    var bottomConstraint: NSLayoutConstraint? {
+    public var bottomConstraint: NSLayoutConstraint? {
         get {
             if let value = objc_getAssociatedObject(self, &bottomConstraintKey) as? NSLayoutConstraint {
                 return value
@@ -50,7 +50,7 @@ internal extension UIView {
         }
     }
     
-    var leadingConstraint: NSLayoutConstraint? {
+    public var leadingConstraint: NSLayoutConstraint? {
         get {
             if let value = objc_getAssociatedObject(self, &leadingConstraintKey) as? NSLayoutConstraint {
                 return value
@@ -67,7 +67,7 @@ internal extension UIView {
         }
     }
     
-    var trailingConstraint: NSLayoutConstraint? {
+    public var trailingConstraint: NSLayoutConstraint? {
         get {
             if let value = objc_getAssociatedObject(self, &trailingConstraintKey) as? NSLayoutConstraint {
                 return value
@@ -84,7 +84,7 @@ internal extension UIView {
         }
     }
     
-    var widthConstraint: NSLayoutConstraint? {
+    public var widthConstraint: NSLayoutConstraint? {
         get {
             if let value = objc_getAssociatedObject(self, &widthConstraintKey) as? NSLayoutConstraint {
                 return value
@@ -101,7 +101,7 @@ internal extension UIView {
         }
     }
     
-    var heightConstraint: NSLayoutConstraint? {
+    public var heightConstraint: NSLayoutConstraint? {
         get {
             if let value = objc_getAssociatedObject(self, &heightConstraintKey) as? NSLayoutConstraint {
                 return value
