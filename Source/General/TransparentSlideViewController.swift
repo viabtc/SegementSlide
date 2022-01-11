@@ -69,7 +69,7 @@ open class TransparentSlideViewController: SegementSlideViewController {
     
     open override func viewDidLoad() {
         super.viewDidLoad()
-        edgesForExtendedLayout = .top
+        edgesForExtendedLayout = [.top, .bottom]
         setupTitleLabel()
     }
     

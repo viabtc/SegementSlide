@@ -13,7 +13,7 @@ extension SegementSlideViewController {
     internal func setup() {
         view.backgroundColor = .white
         extendedLayoutIncludesOpaqueBars = true
-        edgesForExtendedLayout = []
+        edgesForExtendedLayout = [.bottom]
         setupSegementSlideViews()
         setupSegementSlideScrollView()
         setupSegementSlideHeaderView()
