@@ -32,17 +32,13 @@ open class SegementSlideViewController: UIViewController {
     
     open var headerStickyHeight: CGFloat {
         let headerHeight = headerView.frame.height.rounded(.up)
-        if edgesForExtendedLayout.contains(.top) {
-            return headerHeight - topLayoutLength
-        } else {
-            return headerHeight
-        }
+        return headerHeight
     }
     open var switcherHeight: CGFloat {
         return switcherView.ssDataSource?.height ?? 44
     }
     open var contentViewHeight: CGFloat {
-        return view.bounds.height-topLayoutLength-switcherHeight
+        return view.bounds.height-switcherHeight
     }
     public var currentIndex: Int? {
         return switcherView.ssSelectedIndex
@@ -67,14 +63,7 @@ open class SegementSlideViewController: UIViewController {
     }
     
     open func segementSlideHeaderView() -> UIView? {
-        if edgesForExtendedLayout.contains(.top) {
-            #if DEBUG
-            assert(false, "must override this variable")
-            #endif
-            return nil
-        } else {
-            return nil
-        }
+        return nil
     }
     
     open func segementSlideSwitcherView() -> SegementSlideSwitcherDelegate {

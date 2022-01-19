@@ -93,19 +93,12 @@ extension SegementSlideViewController {
     }
     
     public func layoutSegementSlideScrollView() {
-        let topLayoutLength: CGFloat
-        if edgesForExtendedLayout.contains(.top) {
-            topLayoutLength = 0
-        } else {
-            topLayoutLength = self.topLayoutLength
-        }
-        
         headerView.translatesAutoresizingMaskIntoConstraints = false
         if headerView.topConstraint == nil {
-            headerView.topConstraint = headerView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: topLayoutLength)
+            headerView.topConstraint = headerView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 0)
         } else {
-            if headerView.topConstraint?.constant != topLayoutLength {
-                headerView.topConstraint?.constant = topLayoutLength
+            if headerView.topConstraint?.constant != 0 {
+                headerView.topConstraint?.constant = 0
             }
         }
         if headerView.leadingConstraint == nil {
@@ -170,7 +163,7 @@ extension SegementSlideViewController {
         headerView.layoutIfNeeded()
         
         let innerHeaderHeight = headerView.frame.height
-        let contentSize = CGSize(width: view.bounds.width, height: topLayoutLength+innerHeaderHeight+switcherHeight+contentViewHeight+1)
+        let contentSize = CGSize(width: view.bounds.width, height: innerHeaderHeight+switcherHeight+contentViewHeight+1)
         if scrollView.contentSize != contentSize {
             // 修复偏移过大不会回弹
             if scrollView.contentOffset.y > contentSize.height - scrollView.bounds.height {
