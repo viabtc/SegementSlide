@@ -48,7 +48,8 @@ extension SegementSlideViewController {
                     resetOtherCachedChildViewControllerContentOffsetY()
                     return
                 }
-                if childScrollView.contentOffset.y < 0 {
+                let childScrollViewMinY = 0 - childScrollView.contentInset.top
+                if childScrollView.contentOffset.y < childScrollViewMinY {
                     if childBouncesTranslationY > lastChildBouncesTranslationY {
                         scrollView.contentOffset.y = 0
                         canChildViewScroll = true
@@ -69,18 +70,19 @@ extension SegementSlideViewController {
         }
         let parentContentOffsetY = scrollView.contentOffset.y
         let childContentOffsetY = childScrollView.contentOffset.y
+        let childScrollViewMinY = 0 - childScrollView.contentInset.top
         switch innerBouncesType {
         case .parent:
             if !canChildViewScroll {
-                childScrollView.contentOffset.y = 0
-            } else if childContentOffsetY <= 0 {
+                childScrollView.contentOffset.y = childScrollViewMinY
+            } else if childContentOffsetY <= childScrollViewMinY {
                 canChildViewScroll = false
                 canParentViewScroll = true
             }
         case .child:
             if !canChildViewScroll {
-                childScrollView.contentOffset.y = 0
-            } else if childContentOffsetY <= 0 {
+                childScrollView.contentOffset.y = childScrollViewMinY
+            } else if childContentOffsetY <= childScrollViewMinY {
                 if parentContentOffsetY <= 0 {
                     canChildViewScroll = true
                 }
