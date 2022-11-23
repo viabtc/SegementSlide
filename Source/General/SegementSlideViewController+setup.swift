@@ -149,7 +149,9 @@ extension SegementSlideViewController {
             contentView.trailingConstraint = contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         }
         if contentView.bottomConstraint == nil {
-            contentView.bottomConstraint = contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            let btc = contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            btc.priority = UILayoutPriority(700)
+            contentView.bottomConstraint = btc
         }
         // 保持底部偏移一致
         if let offset = scrollView.bottomConstraint?.constant {
